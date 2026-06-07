@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Buttons</title>
+    <style  >
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, blue, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .image-button {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+            z-index: 1;
+        }
+
+        .image-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-button:hover::after {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .image-button:active {
+            transform: translateY(-4px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .button-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .button-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="image-button" aria-label="Gallery Image 1" target="_blank" href="" >
+            <img src="COINBASE9.PNG" alt="Gallery Image 1">
+        </button>
+        
+        <button class="image-button" aria-label="Gallery Image 2">
+            <img src="cc55.png" alt="Gallery Image 2">
+        </button>
+        
+        <button class="image-button" aria-label="Gallery Image 3">
+            <img src="cc55.png" alt="Gallery Image 3">
+        </button>
+        <button class="image-button" aria-label="Gallery Image 4">
+            <img src="cc55.png" alt="Gallery Image 4">
+        </button>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.image-button');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('Button clicked:', this.getAttribute('aria-label'));
+                // Add your button action here
+            });
+        });
+    </script>
+</body>
+</html>

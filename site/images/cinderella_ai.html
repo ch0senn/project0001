@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cinderella's Castle Scene (A-Frame)</title>
+    <meta name="description" content="A-Frame Cinderella's Castle Scene">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- Optional: Use extras for gltf-models and controls -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #88ccff">
+      <!-- Cinderella's Castle (Simplified) -->
+      <a-entity position="0 0 -10">
+        <!-- Main tower -->
+        <a-cylinder color="#d8d8ff" radius="2" height="7" position="0 3.5 0"></a-cylinder>
+        <a-cone color="#b8aaff" radius-bottom="2.1" radius-top="0.2" height="2" position="0 8 0"></a-cone>
+        <!-- Side towers -->
+        <a-cylinder color="#d8d8ff" radius="0.7" height="4" position="-3 2 1.5"></a-cylinder>
+        <a-cone color="#b8aaff" radius-bottom="0.8" radius-top="0.1" height="1.2" position="-3 4.6 1.5"></a-cone>
+        <a-cylinder color="#d8d8ff" radius="0.7" height="4" position="3 2 -1.5"></a-cylinder>
+        <a-cone color="#b8aaff" radius-bottom="0.8" radius-top="0.1" height="1.2" position="3 4.6 -1.5"></a-cone>
+        <!-- Castle base -->
+        <a-box color="#b0b0ff" depth="6" height="2" width="8" position="0 1 0"></a-box>
+        <!-- Castle door -->
+        <a-torus color="#8888aa" radius="0.7" radius-tubular="0.15" arc="180" rotation="90 0 0" position="0 1.1 3.1"></a-torus>
+        <a-box color="#f9e2c0" width="1.2" height="1.6" depth="0.1" position="0 0.5 3.15"></a-box>
+      </a-entity>
+
+      <!-- Giant Glass Slipper -->
+      <a-entity position="0 0.5 -4" rotation="0 15 0">
+        <a-torus color="#e4f1fb" opacity="0.7" radius="1.65" radius-tubular="0.13" arc="270" rotation="90 0 0" position="0 0.5 0"></a-torus>
+        <a-cylinder color="#e4f1fb" opacity="0.6" radius="0.7" height="1.9" rotation="0 0 20" position="0.6 1.1 0"></a-cylinder>
+        <a-cone color="#cbeffd" opacity="0.55" radius-bottom="0.7" radius-top="0.18" height="2" position="1.4 1.2 0" rotation="0 0 30"></a-cone>
+      </a-entity>
+
+      <!-- Cinderella (Simple avatar) -->
+      <a-entity position="0 1.6 -4">
+        <!-- Dress -->
+        <a-cone color="#7ecfff" radius-bottom="0.3" radius-top="0.08" height="0.6"></a-cone>
+        <!-- Body -->
+        <a-cylinder color="#ffe0e8" radius="0.09" height="0.28" position="0 0.38 0"></a-cylinder>
+        <!-- Head -->
+        <a-sphere color="#ffe9e4" radius="0.13" position="0 0.6 0"></a-sphere>
+        <!-- Hair -->
+        <a-sphere color="#ffdb8e" radius="0.09" position="0 0.69 0.07"></a-sphere>
+      </a-entity>
+
+      <!-- Mickey Mouse -->
+      <a-entity position="-0.7 1.2 -4.2">
+        <!-- Head -->
+        <a-sphere color="#222" radius="0.11"></a-sphere>
+        <!-- Ears -->
+        <a-sphere color="#222" radius="0.06" position="-0.11 0.1 0"></a-sphere>
+        <a-sphere color="#222" radius="0.06" position="0.11 0.1 0"></a-sphere>
+        <!-- Face -->
+        <a-sphere color="#fff" radius="0.07" position="0 -0.04 0.07"></a-sphere>
+        <!-- Body -->
+        <a-cylinder color="#f00" radius="0.09" height="0.15" position="0 -0.16 0"></a-cylinder>
+      </a-entity>
+
+      <!-- Donald Duck -->
+      <a-entity position="0.7 1.2 -4.2">
+        <!-- Head -->
+        <a-sphere color="#fff" radius="0.11"></a-sphere>
+        <!-- Beak -->
+        <a-cylinder color="#ffde7c" radius="0.04" height="0.09" rotation="90 0 0" position="0 0.02 0.12"></a-cylinder>
+        <!-- Hat -->
+        <a-cylinder color="#003366" radius="0.05" height="0.03" position="0 0.11 0"></a-cylinder>
+        <!-- Body -->
+        <a-cylinder color="#1c5a99" radius="0.09" height="0.15" position="0 -0.17 0"></a-cylinder>
+      </a-entity>
+
+      <!-- Peter Pan -->
+      <a-entity position="-1.6 1.15 -4">
+        <!-- Body -->
+        <a-cylinder color="#1a9d3a" radius="0.07" height="0.22"></a-cylinder>
+        <!-- Head -->
+        <a-sphere color="#fce9c7" radius="0.09" position="0 0.14 0"></a-sphere>
+        <!-- Hat -->
+        <a-cone color="#0c6f2d" radius-bottom="0.07" radius-top="0.01" height="0.09" position="0 0.23 0" rotation="0 0 25"></a-cone>
+      </a-entity>
+
+      <!-- Pinocchio -->
+      <a-entity position="1.6 1.15 -4">
+        <!-- Body -->
+        <a-cylinder color="#e3b05a" radius="0.07" height="0.22"></a-cylinder>
+        <!-- Head -->
+        <a-sphere color="#f3e3c7" radius="0.09" position="0 0.14 0"></a-sphere>
+        <!-- Nose -->
+        <a-cylinder color="#fce9c7" radius="0.015" height="0.11" rotation="90 0 0" position="0 0.14 0.1"></a-cylinder>
+        <!-- Hat -->
+        <a-cone color="#5277d9" radius-bottom="0.07" radius-top="0.01" height="0.09" position="0 0.23 0" rotation="0 0 10"></a-cone>
+      </a-entity>
+
+      <!-- Buzz Lightyear -->
+      <a-entity position="-2.5 1.05 -4.3">
+        <!-- Body -->
+        <a-cylinder color="#afeba9" radius="0.09" height="0.28"></a-cylinder>
+        <!-- Head -->
+        <a-sphere color="#fee7c6" radius="0.08" position="0 0.18 0"></a-sphere>
+        <!-- Helmet -->
+        <a-sphere color="#cde8fc" radius="0.09" position="0 0.18 0" opacity="0.4"></a-sphere>
+        <!-- Arms -->
+        <a-cylinder color="#fff" radius="0.018" height="0.25" rotation="0 0 70" position="0.09 0.07 0"></a-cylinder>
+        <a-cylinder color="#fff" radius="0.018" height="0.25" rotation="0 0 -70" position="-0.09 0.07 0"></a-cylinder>
+      </a-entity>
+
+      <!-- Winnie the Pooh -->
+      <a-entity position="2.5 1.05 -4.3">
+        <!-- Body -->
+        <a-cylinder color="#f7c04a" radius="0.09" height="0.22"></a-cylinder>
+        <!-- Head -->
+        <a-sphere color="#f7c04a" radius="0.08" position="0 0.14 0"></a-sphere>
+        <!-- Ears -->
+        <a-sphere color="#f7c04a" radius="0.03" position="0.06 0.2 0"></a-sphere>
+        <a-sphere color="#f7c04a" radius="0.03" position="-0.06 0.2 0"></a-sphere>
+        <!-- Shirt -->
+        <a-cylinder color="#e74c3c" radius="0.09" height="0.08" position="0 0.05 0"></a-cylinder>
+      </a-entity>
+
+      <!-- Ground -->
+      <a-plane color="#a3e67d" width="30" height="30" rotation="-90 0 0" position="0 0 0"></a-plane>
+
+      <!-- Camera + Controls -->
+      <a-entity camera look-controls position="0 2 4"></a-entity>
+    </a-scene>
+  </body>
+</html>
