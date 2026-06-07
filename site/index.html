@@ -1,52 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Example site</title>
-  <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadboxx project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .scroll-container {
+            width: 100%;
+            max-width: 1800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 3px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .scroll-wrapper {
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        .scroll-content {
+            display: flex;
+            animation: scroll 60s linear infinite;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .scroll-content:hover {
+            animation-play-state: paused;
+        }
+
+        .item {
+            min-width: 450px;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .item-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .item-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .item-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .item-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .item-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .item-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .item-7 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .item-8 { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .item-9 { background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%); }
+        .item-10 { background: linear-gradient(135deg, #b993d6 0%, #8ca6da 100%); }
+        .item-11 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .item-12 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .item-13 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .item-14 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .item-15 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .item-16 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .item-17 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .item-18 { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .item-19 { background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%); }
+        .item-20 { background: linear-gradient(135deg, #b993d6 0%, #8ca6da 100%); }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+    <div class="scroll-container">
+        <h1>Sketchfab Model Library</h1>
+        
+        <div class="scroll-wrapper">
+            <div class="scroll-content" id="scrollContent">
+                <!-- 20 items will be generated here -->
+            </div>
+        </div>
 
-  <div class="tint">
-    <header>
-      <section>
-        <h1>Example site title</h1>
-        <p class="subtitle">A subtitle to give more descriptiom and context</p>
-      </section>
-    </header>
-  </div>
+        <div class="controls">
+            <button onclick="toggleScroll()">⏸ Pause/Play</button>
+            <button onclick="resetScroll()">🔄 Reset</button>
+        </div>
 
-  <main>
-    <section>
-      <h2>More context</h2>
-      <p>
-        Content sections can give more context about this example. A little description can be helpful.
-      </p>
-      <p>
-        These sections might not all be on the home page of the examples site. We might use any of the content on this pages in different places on our example sites. But things like a common footer and some common language to set expectations about the DTN button might be useful.
-      </p>
-    </section>
-    <section>
-      <h2>Try this for yourself</h2>
-      <p>
-        To quickly experiment with this example, you can click the button below. Clicking the button will clone <a href="https://github.com/netlify/example-site-boilerplate">this test site repo</a>, setup a new site <a href="https://netlify.com">on Netlify</a> and deploy the site complete with Netlify's CI/CD pipeline configured and operational.
-      </p>
-      <p>
-        <a class="naked" href="https://app.netlify.com/start/deploy?repository=https://github.com/netlify/example-site-boilerplate"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
-      </p>
-    </section>
-  </main>
+        <div class="info">
+            💡 Hover over the items to pause the animation. Click Pause/Play to toggle scrolling.
+        </div>
+    </div>
 
-  <footer>
-    <section>
-      Made with <img class="netliheart" title="love" src="/images/netliheart.svg" alt="love" width="1em"> by the <a href="https://netlify.com">Netlify</a> team. Explore <a href="https://github.com/netlify/example-site-boilerplate">the code</a> in GitHub. Follow <a href="https://twitter.com/netlify">@Netliify</a> on Twitter for regular updates</a>.
-    </section>
-  </footer>
+    <script>
+        const scrollContent = document.getElementById('scrollContent');
+        let isScrolling = true;
 
+        // Generate 20 items
+        function generateItems() {
+            let html = '';
+            for (let i = 1; i <= 20; i++) {
+                html += `<div class="item item-${i}">Item ${i}</div>`;
+            }
+            // Duplicate for seamless loop
+            html += html;
+            scrollContent.innerHTML = html;
+        }
 
-  <!-- Browser-sync support for local development -->
-  <script id="__bs_script__">//<![CDATA[
+        // Toggle play/pause
+        function toggleScroll() {
+            isScrolling = !isScrolling;
+            const animation = isScrolling ? 'scroll 60s linear infinite' : 'none';
+            scrollContent.style.animation = animation;
+        }
+
+        // Reset scroll position
+        function resetScroll() {
+            scrollContent.style.animation = 'none';
+            scrollContent.offsetHeight; // Trigger reflow
+            scrollContent.style.animation = 'scroll 60s linear infinite';
+            isScrolling = true;
+        }
+
+        // Initialize
+        generateItems();
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadboxx project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .scroll-container {
+            width: 100%;
+            max-width: 1800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 3px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .scroll-wrapper {
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        .scroll-content {
+            display: flex;
+            animation: scroll 60s linear infinite;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .scroll-content:hover {
+            animation-play-state: paused;
+        }
+
+        .item {
+            min-width: 450px;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .item-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .item-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .item-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .item-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .item-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .item-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .item-7 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .item-8 { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .item-9 { background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%); }
+        .item-10 { background: linear-gradient(135deg, #b993d6 0%, #8ca6da 100%); }
+        .item-11 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .item-12 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .item-13 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .item-14 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .item-15 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .item-16 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .item-17 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .item-18 { background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%); }
+        .item-19 { background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%); }
+        .item-20 { background: linear-gradient(135deg, #b993d6 0%, #8ca6da 100%); }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <h1>Sketchfab Model Library</h1>
+        
+        <div class="scroll-wrapper">
+            <div class="scroll-content" id="scrollContent">
+                <!-- 20 items will be generated here -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="toggleScroll()">⏸ Pause/Play</button>
+            <button onclick="resetScroll()">🔄 Reset</button>
+        </div>
+
+        <div class="info">
+            💡 Hover over the items to pause the animation. Click Pause/Play to toggle scrolling.
+        </div>
+    </div>
+
+    <script>
+        const scrollContent = document.getElementById('scrollContent');
+        let isScrolling = true;
+
+        // Generate 20 items
+        function generateItems() {
+            let html = '';
+            for (let i = 1; i <= 20; i++) {
+                html += `<div class="item item-${i}">Item ${i}</div>`;
+            }
+            // Duplicate for seamless loop
+            html += html;
+            scrollContent.innerHTML = html;
+        }
+
+        // Toggle play/pause
+        function toggleScroll() {
+            isScrolling = !isScrolling;
+            const animation = isScrolling ? 'scroll 60s linear infinite' : 'none';
+            scrollContent.style.animation = animation;
+        }
+
+        // Reset scroll position
+        function resetScroll() {
+            scrollContent.style.animation = 'none';
+            scrollContent.offsetHeight; // Trigger reflow
+            scrollContent.style.animation = 'scroll 60s linear infinite';
+            isScrolling = true;
+        }
+
+        // Initialize
+        generateItems();
+    </script>
+</body>
+</html>
+
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
 //]]></script>
 </body>
